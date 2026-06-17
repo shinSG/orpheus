@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api.tts import router as tts_router
+from app.api.training import router as training_router
 
 app = FastAPI(
     title="MiMo TTS Service",
@@ -18,6 +19,7 @@ app.add_middleware(
 )
 
 app.include_router(tts_router)
+app.include_router(training_router)
 
 
 @app.get("/health")
